@@ -1,5 +1,5 @@
-// json file of crazy things
-let requestURL = 'https://jessicagilfillan.github.io/Final_Exam_Prep/Q3/cats.json';
+// json file of crazy things // had to switch to json file hosted on my account because of invalid character at line 1
+let requestURL = 'https://mikemacgregor.github.io/COMP1073FinalExam/Q3/cats.json';
 
 // button on the page with event listener to trigger fetchAll
 let button = document.querySelector('button');
@@ -33,11 +33,13 @@ function showMeCats(jsonObj) {
     let img = document.createElement('img');
 
     div.setAttribute('class', 'col');
-    img.setAttribute('src', 'https://jessicagilfillan.github.io/Final_Exam_Prep/Q3/assets/' + cats[i].photo);
+    let photoLink = cats[i].photo.replace('github.com', 'raw.githubusercontent.com');
+    photoLink = photoLink.replace('/blob/', '/');
+    img.setAttribute('src', photoLink);
     img.setAttribute('alt', cats[i].name);
 
     h3.textContent = cats[i].name;
-    p.textContent = cats[i].species;
+    p.innerHTML = "species: " + cats[i].species + "<br>age: " + cats[i].age + "<br>favourite foods: " + cats[i].favFoods;
 
     div.appendChild(h3);
     div.appendChild(img);
